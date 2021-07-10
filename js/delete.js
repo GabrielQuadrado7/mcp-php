@@ -23,7 +23,7 @@ function deletarFavorito(nome, caminho)
             star.src = "../../assets/star-fill.svg"
 
             favoritarBtn = document.getElementById("botao-favotirar")
-            favoritarBtn.setAttribute("onclick", "deletarFavorito(`" + nomeFav + "`,`" + caminhoFav + "`)")
+            favoritarBtn.setAttribute("onclick", "cadastrarFavorito(`" + nomeFav + "`,`" + caminhoFav + "`)")
         
             $("#area-notificacao").append(`
                     <div class="toast mb-3" role="alert" aria-live="assertive" arial-atomic="true" data-delay="2500">
