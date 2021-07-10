@@ -1,0 +1,11 @@
+{
+    "main"              :  "home",
+    "cadastroProduto"   :  "Cadastro Produto",
+    "cadastroEtapa"     :  "Cadastro Etapa",
+    "cadastroGrupo"     :  "Cadastro Grupo",
+    "listaProduto"      :  "Lista Produto",
+    "listaEtapa"        :  "Lista Etapa",
+    "listaGrupo"        :  "Lista Grupo",
+    "cadastroRemessa"   :  "Cadastro Remessa",
+    "listaRemessa"      :  "Lista Remessa"
+}

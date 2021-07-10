@@ -1,0 +1,5 @@
+PENDENTES
+
+Arrumar a pesquisa da pagina cadastrar produtos
+
+Criar um arquivo separado para a lista de produto e para a lista de produtos com select [MUNDANÇA NOS ARQUIVOS AJAX]

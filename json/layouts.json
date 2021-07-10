@@ -1,0 +1,11 @@
+{
+    "main"              :   "main.layout.php",
+    "cadastroProduto"   :   "cadastroProduto.layout.php",
+    "cadastroEtapa"     :   "cadastroEtapa.layout.php",
+    "cadastroGrupo"     :   "cadastroGrupo.layout.php",
+    "listaProduto"      :   "listaProduto.layout.php",
+    "listaEtapa"        :   "listaEtapa.layout.php",
+    "listaGrupo"        :   "listaGrupo.layout.php",
+    "listaRemessa"       :  "listaRemessa.layout.php",
+    "cadastroRemessa"   :   "cadastroRemessa.layout.php"
+}
