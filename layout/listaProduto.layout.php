@@ -33,7 +33,7 @@
                 </div>
                 <div class="col">
                     <br>
-                    <button type="button" class="btn btn-primary" onclick="listProdutos()">Pesquisar</button>
+                    <button type="button" class="btn btn-primary" onclick="listProdutosForEdit()">Pesquisar</button>
                 </div>
             </div>
         </form>

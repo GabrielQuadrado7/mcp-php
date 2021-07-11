@@ -2,8 +2,8 @@
 include_once "../class/PgsqlCommands.class.php";
 
 // Verifica se existe a variável txtnome
-if (isset($_GET["codigo"])) {
-    $codigo = $_GET["codigo"];
+if (isset($_POST["codigo"])) {
+    $codigo = $_POST["codigo"];
 
     // Conexao com o banco de dados
     $conn = new PgsqlCommands();
@@ -16,17 +16,17 @@ if (isset($_GET["codigo"])) {
     } 
     else 
     {
-        $codigo = $_GET['codigo'];
+        $codigo = $_POST['codigo'];
 
         if(is_numeric($codigo))
         {
-            $codigoPesquisa = array("codigo" => $_GET["codigo"]);
+            $codigoPesquisa = array("codigo" => $_POST["codigo"]);
             $sql = "SELECT * FROM remessaproducao WHERE codigo = :codigo";
             $result = $conn->select($sql, $codigoPesquisa);
         }
         else
         {
-            $produtoPesquisa = array("descricao" => "%" . $_GET["codigo"] . "%");
+            $produtoPesquisa = array("descricao" => "%" . $_POST["codigo"] . "%");
             $sql = "SELECT codigo FROM produto WHERE descricao LIKE :descricao";
             $produtoFilter = $conn->select($sql, $produtoPesquisa);
 

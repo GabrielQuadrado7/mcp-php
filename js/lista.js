@@ -1,70 +1,60 @@
-// arquivo para listar, faz processamento no banco
-
-
-// Função para criar um objeto XMLHTTPRequest
-function CriaRequest() {
-    try{
-        request = new XMLHttpRequest()
-    }catch (IEAtual){
-
-        try{
-            request = new ActiveXObject("Msxml2.XMLHTTP")
-        }catch(IEAntigo){
-
-            try{
-                request = new ActiveXObject("Microsoft.XMLHTTP")
-            }catch(falha){
-                request = false
-            }
-        }
-    }
-
-    if (!request)
-        alert("Seu Navegador não suporta Ajax!")
-    else
-        return request
-}
+/*
+*
+* Daqui para baixo são as funções de listagem dos produtos
+*
+* 1° função = somente listar os produtos, somente visualização,
+* 2° função = lista com edição.
+*
+*/
 
 
 // Função para listar os produtos na página lista produtos
-function listProdutos() 
+function listProdutosForEdit() 
 {
-
-    // div que mostra o resultado :)
-    result = document.getElementById("result")
 
     // verifica se a requisição é possível
     xmlreq = CriaRequest()
 
     // capturando os valores de produto, grupo e status
-    produto   = document.getElementById("nomeProdutoPesquisa").value
-    grupo = document.getElementById("grupo").value
-    status = document.getElementById("status").value
+    let produto   = document.getElementById("nomeProdutoPesquisa").value
+    let grupo = document.getElementById("grupo").value
+    let status = document.getElementById("status").value
 
-    url = "../../ajax/listaProdutos.php?produto=" + produto + "&grupo=" + grupo + "&status=" + status + "&select=select"
+    // let para url e os dados
+    let url = "../../ajax/listaProdutosForEdit.php"
+    let data = "produto=" + produto + "&grupo=" + grupo + "&status=" + status
 
-    xmlreq.open("GET", url, true)
+    // const responsável pela request
+    const request = $.ajax({
+        url: url,
+        data: data,
+        type: "POST",
+        dataType: "html"
+    })
 
-    // função para colocar o resultado da requisição na tela
-    xmlreq.onreadystatechange = function()
-    {
+    // se a requisição for feita
+    request.done( (jqXHR, textStatus) => {
 
-        // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
-        if (xmlreq.readyState == 4) 
+        if(textStatus == "success")
         {
-
-            // Verifica se o arquivo foi encontrado com sucesso
-            if (xmlreq.status == 200) 
-            {
-                document.getElementById("resultado").innerHTML = xmlreq.responseText
-            }
-            else
-            {
-                result.innerHTML = "Erro: " + xmlreq.statusText
-            }
+            document.getElementById("resultado").innerHTML = request.responseText
         }
-    }
-    xmlreq.send(null)
+        else
+        {
+            console.log("Error: " + request.responseText)
+        }
+        
+    })
+
+    // se a requisição falhar
+    request.fail( (jqXHR, textStatus) => {
+        console.log("Error: " + request.responseText)
+    })
+    
+    // quando a requisição estiver completa
+    request.always( _ => {
+        // ...
+    })
 }
 
 
@@ -151,32 +141,48 @@ function listEtapas(select = false)
     xmlreq.send(null)
 }
 
+
+
+/*
+*   daqui pra baixo é onde fica a função responsáve por listar as remessas
+*/
+
+// função responsável por listar a remessa de produção
 function listRemessaProducao()
 {
-    codigo = document.getElementById("codigoRemessaProducaoPesquisa").value
+    let codigo = document.getElementById("codigoRemessaProducaoPesquisa").value
 
-    result = document.getElementById("result")
+    // let responsável pela div do resultado
+    let result = document.getElementById("result")
 
-    xmlreq = CriaRequest()
-    xmlreq.open("GET", "../../ajax/listaRemessaProducao.php?codigo=" + codigo)
+    let url = "../../ajax/listaRemessaProducao.php"
+    let data = "codigo=" + codigo
 
-    xmlreq.onreadystatechange = function()
-    {
-        // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
-        if (xmlreq.readyState == 4) 
+    const request = $.ajax({
+        url: url,
+        type: "POST",
+        data: data,
+        dataType: "html"
+    })
+
+    request.done( (responseText, textStatus) => {
+        if( textStatus == "success")
         {
-
-            // Verifica se o arquivo foi encontrado com sucesso
-            if (xmlreq.status == 200) 
-            {
-                result.innerHTML = xmlreq.responseText
-            }
-            else
-            {
-                result.innerHTML = "Erro: " + xmlreq.statusText
-            }
+            result.innerHTML = responseText
         }
-    }
-    xmlreq.send(null)
+        else
+        {
+            console.log(responseText, textStatus)
+            result.innerHTML = responseText
+        }
+    })
 
+    request.fail( answer => {
+        console.log(answer)
+        result.innerHTML = responseText
+    })
+
+    request.always( _ => {
+        // ...
+    })
 }

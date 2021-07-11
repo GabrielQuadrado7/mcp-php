@@ -376,6 +376,12 @@ function cadastrarRemessa()
             data: data
         })
 
+        // spinner de loading
+        result.innerHTML = `
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden"></span>
+            </div>`
+            
         // se a requisição for feita
         request.done((jqXHR, textStatus) => {
             if(textStatus == "success")

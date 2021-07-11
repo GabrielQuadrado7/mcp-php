@@ -1,0 +1,19 @@
+<div id="text">
+
+</div>
+
+<script>
+
+    function mudarTexto(texto)
+    {
+
+        document.getElementById("text").innerHTML = texto
+
+        setTimeout(function(){
+            this.mudarTexto(Math.random() * 10)
+        },20)
+    }
+
+    mudarTexto(Math.random() * 10)
+    
+</script>
