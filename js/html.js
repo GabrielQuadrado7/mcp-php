@@ -58,5 +58,11 @@ function cancelaEdicaoProduto(codigo)
     $("#botaoDeletar" + codigo + " img").attr("src", "../../assets/trash-fill.svg")
     $("#botaoDeletar" + codigo).attr("onclick", "deletarProduto(" + codigo + ")")
     listProdutosForEdit()
+}
 
+function deletarProduto(codigo)
+{
+    $("#botaoDeletar" + codigo).attr("onclick", "confirmarExclusaoProduto(" + codigo + ")")
+    $("#botaoDeletar" + codigo).attr("title", "confirmar exclusão do produto")
+    $("#botaoDeletar" + codigo +" img").attr("src", "../../assets/check-white.svg")
 }

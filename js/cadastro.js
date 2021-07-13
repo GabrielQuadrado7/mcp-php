@@ -454,7 +454,7 @@ function cadastrarFavorito(nome, caminho)
             let star = document.getElementById("favorito-star")
             star.src = "../../assets/star.svg"
 
-            favoritarBtn = document.getElementById("botao-favotirar")
+            favoritarBtn = document.getElementById("botao-favoritar")
             favoritarBtn.setAttribute("onclick", "deletarFavorito(`" + nomeFav + "`,`" + caminhoFav + "`)")
         
             $("#area-notificacao").append(`
@@ -476,6 +476,11 @@ function cadastrarFavorito(nome, caminho)
 
             //metodo para exibir o toast
             $(".toast").toast("show")
+
+            setTimeout(_ => {
+                $("#botao-favoritar").prop("disabled", false)
+            },2700)
+            $("#botao-favoritar").prop("disabled", true)
 
             //metodo para remover o toast
             $(".toast").on("hidden.bs.toast", (e) => {
