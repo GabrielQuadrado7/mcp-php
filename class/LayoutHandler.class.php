@@ -1,6 +1,15 @@
 <?php
 
-// classe que desenha a tela com base nos ambientes setados em ../json/layouts.json
+/**
+ * 
+ * LayoutHandler = handler the layout that is show if the path exist in '/json/layouts.json'
+ * 
+ * @param setScreen = path of environments (ex: '../../forms/spaceStation')
+ * @method getScreen = draw the screen with environment passed
+ * @return void
+ * 
+ **/ 
+
 class LayoutHandler
 {
     public $setScreen;

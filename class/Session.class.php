@@ -1,9 +1,14 @@
 <?php
 
+/**
+ * 
+ * Session = verify the session for exec the application
+ * 
+ */
+
 class Session
 {
-    // método construtor que executa o verifySession e caso esteja logado o comando da página em que é chamado continua
-    // senão volta para a página de login
+    
     public function __construct()
     {
         $this->verifySession();

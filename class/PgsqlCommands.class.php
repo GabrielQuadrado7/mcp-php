@@ -1,12 +1,27 @@
 <?php
 
+/**
+ * 
+ * PgsqlCommands = class that connect and execute querys on database
+ * 
+ * @return json
+ * 
+ **/ 
+
 class PgsqlCommands extends PDO 
 {
-
+    
     private $conn;
 
     public function __construct()
     {
+
+        /**
+         * 
+         * @var $ini = read mainDatabase.ini file
+         * @var $paramsForAcess = array with connection params (array)
+         * 
+         */
 
         if(file_exists('../connection/mainDatabase.ini'))
         {
